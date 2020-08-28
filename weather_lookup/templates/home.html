@@ -4,6 +4,252 @@
 {% block content %}
 
 <h1>Main Page</h1>
+<br/>
+
+{% if api %}
+
+    {% if api == "Error..." %}
+        There's an error, please try again
+
+    {% else %}
+
+        {{api.SiteRep.DV.Location}}<br/><br/>
+
+        <div class="jumbotron">
+          <h1 class="h1"> {{ api.SiteRep.DV.Location.name }}  </h1>
+          <p class="lead"> {{ api.SiteRep.DV.Location.Period.0.value }} </p>
+
+       <!--    Weather Type -->
+
+          <span>
+
+            {% if api.SiteRep.DV.Location.Period.0.Rep.0.W == "0" %}
+              <p class="display-4">Clear Night</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "1" %}
+              <p class="display-4">Sunny Day</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "2" %}
+              <p class="display-4">Partly Cloudly ( Night )</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "3" %}
+              <p class="display-4">Partly Cloudly ( Day )</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "4" %}
+              <p class="display-4">Not Used</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "5" %}
+              <p class="display-4">Mist</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "6" %}
+              <p class="display-4">Fog</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "7" %}
+              <p class="display-4">Cloudy</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "8" %}
+              <p class="display-4">Overcast</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "9" %}
+              <p class="display-4">Light rain shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "10" %}
+              <p class="display-4">Light rain shower (day)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "11" %}
+              <p class="display-4">Drizzle</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "12" %}
+              <p class="display-4">Light rain</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "13" %}
+              <p class="display-4">Heavy rain shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "14" %}
+              <p class="display-4">Heavy rain shower (day)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "15" %}
+              <p class="display-4">Heavy rain</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "16" %}
+              <p class="display-4">Sleet shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "17" %}
+              <p class="display-4">Sleet shower (day)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "18" %}
+              <p class="display-4">Sleet</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "19" %}
+              <p class="display-4">Hail shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "20" %}
+              <p class="display-4">Hail shower (day)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "21" %}
+              <p class="display-4">Hail</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "22" %}
+              <p class="display-4">Light snow shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "23" %}
+              <p class="display-4">Light snow shower (day)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "24" %}
+              <p class="display-4">Light snow</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "25" %}
+              <p class="display-4">Heavy snow shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "26" %}
+              <p class="display-4">Heavy snow shower (day)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "27" %}
+              <p class="display-4">Heavy snow</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "28" %}
+              <p class="display-4">Thunder shower (night)</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.W == "29" %}
+              <p class="display-4">Thunder shower (day)</p>
+
+            {% else %}
+              <p class="display-4">Thunder</p>
+
+            {% endif %}
+
+          </span>
+
+            <!--   UV INDEX -->
+
+          <span>
+
+            <p class="lead"> Max UV Index : {{ api.SiteRep.DV.Location.Period.0.Rep.0.U }} </p>
+
+            {% if api.SiteRep.DV.Location.Period.0.Rep.0.U == "1" or api.SiteRep.DV.Location.Period.0.Rep.0.U == "2" %}
+              <p>Low exposure. No protection required. You can safely stay outside</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.U == "3" or api.SiteRep.DV.Location.Period.0.Rep.0.U == "4" or api.SiteRep.DV.Location.Period.0.Rep.0.U == "5" %}
+              <p>Moderate exposure. Seek shade during midday hours, cover up and wear sunscreen</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.U == "6" or api.SiteRep.DV.Location.Period.0.Rep.0.U == "7" %}
+              <p>High exposure. Seek shade during midday hours, cover up and wear sunscreen</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.U == "8" or api.SiteRep.DV.Location.Period.0.Rep.0.U == "9" or api.SiteRep.DV.Location.Period.0.Rep.0.U == "10" %}
+              <p>Very high. Avoid being outside during midday hours. Shirt, sunscreen and hat are essential</p>
+
+            {% else %}
+              <p>Extreme. Avoid being outside during midday hours. Shirt, sunscreen and hat essential.</p>
+
+            {% endif %}
+
+          </span>
+
+
+          <hr class="my-20">
+
+          <span style="display: inline-block; width:35%;">
+
+            <h5><strong>Day</strong></h5>
+            <p>Max Temp : {{ api.SiteRep.DV.Location.Period.0.Rep.0.Dm }}° C</p>
+            <p>Feels like: {{ api.SiteRep.DV.Location.Period.0.Rep.0.FDm }}° C</p>
+            <p>Wind Gust: {{ api.SiteRep.DV.Location.Period.0.Rep.0.Gn }}mph</p>
+            <p>Relative humidity : {{ api.SiteRep.DV.Location.Period.0.Rep.0.Hn }}%</p>
+
+          <!--   Visibility : {{ api.SiteRep.DV.Location.Period.0.Rep.0.V }}<br/> -->
+
+            {% if api.SiteRep.DV.Location.Period.0.Rep.0.V == "UN" %}
+              <p>Visibility : Unknown</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "VP" %}
+              <p>Visibility : Very poor - Less than 1 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "PO" %}
+              <p>Visibility : Poor - Between 1-4 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "MO" %}
+              <p>Visibility :  Moderate - Between 4-10 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "GO" %}
+              <p> Visibility : Good - Between 10-20 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "VG" %}
+              <p> Visibility : Very good - Between 20-40 km</p>
+
+            {% else %}
+              <p> Visibility : Excellent - More than 40 km</p>
+
+            {% endif  %}
+
+            <p>Wind Direction : {{ api.SiteRep.DV.Location.Period.0.Rep.0.D }}</p>
+            <p>Wind Speed : {{ api.SiteRep.DV.Location.Period.0.Rep.0.S }}mph</p>
+
+          </span>
+
+          <span style="display: inline-block; width:35%;">
+
+            <h5><strong>Night</strong></h5>
+            <p>Min Temp : {{ api.SiteRep.DV.Location.Period.0.Rep.1.Nm }}° C</p>
+            <p>Feels like : {{ api.SiteRep.DV.Location.Period.0.Rep.1.FNm }}° C</p>
+            <p>Wind Gust: {{ api.SiteRep.DV.Location.Period.0.Rep.1.Gm }}mph</p>
+            <p>Relative humidity : {{ api.SiteRep.DV.Location.Period.0.Rep.1.Hm }}%</p>
+            <!-- <p>Visibility : {{ api.SiteRep.DV.Location.Period.0.Rep.1.V }}</p> -->
+
+            {% if api.SiteRep.DV.Location.Period.0.Rep.0.V == "UN" %}
+              <p>Visibility : Unknown</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "VP" %}
+              <p>Visibility : Very poor - Less than 1 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "PO" %}
+              <p>Visibility : Poor - Between 1-4 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "MO" %}
+              <p>Visibility :  Moderate - Between 4-10 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "GO" %}
+              <p> Visibility : Good - Between 10-20 km</p>
+
+            {% elif api.SiteRep.DV.Location.Period.0.Rep.0.V == "VG" %}
+              <p> Visibility : Very good - Between 20-40 km</p>
+
+            {% else %}
+              <p> Visibility : Excellent - More than 40 km</p>
+
+            {% endif  %}
+
+            <p>Wind Direction : {{ api.SiteRep.DV.Location.Period.0.Rep.0.D }}</p>
+            <p>Wind Speed : {{ api.SiteRep.DV.Location.Period.0.Rep.1.S }}mph</p>
+
+          </span>
+        <!--   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+        </div>
+
+
+    {% endif %}
+
+
+{% endif %}
+
+
+
+
+
+<!--
+{{ api.SiteRep.DV.Location.Period.1 }}<br/><br/>
+Date: {{ api.SiteRep.DV.Location.Period.1.value }}<br/><br/> -->
+
+<!-- {{ api.SiteRep.DV.Location.Period.2 }}<br/><br/>
+Date: {{ api.SiteRep.DV.Location.Period.2.value }}<br/><br/>
+
+{{ api.SiteRep.DV.Location.Period.3 }}<br/><br/>
+Date: {{ api.SiteRep.DV.Location.Period.3.value }}<br/><br/>
+
+{{ api.SiteRep.DV.Location.Period.4 }}<br/><br/>
+Date: {{ api.SiteRep.DV.Location.Period.4.value }}<br/><br/>
+ -->
+
+
 
 {% endblock %}
 
